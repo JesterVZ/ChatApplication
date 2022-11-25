@@ -35,7 +35,7 @@ fun LoginScreen(
             .background(color = Color.Transparent))
         MainInput(label = "Login", text = viewModel.loginText, placeholder = "Login")
         MainInput(label = "Password", text = viewModel.passwordText, placeholder = "Password", transformation = PasswordVisualTransformation())
-        MainButton(text = "Login", onClick = {  }, modifier = Modifier.padding(vertical = 35.dp))
-        
+        MainButton(text = "Login", onClick = { viewModel.Login() }, modifier = Modifier.padding(vertical = 35.dp))
+
     }
 }

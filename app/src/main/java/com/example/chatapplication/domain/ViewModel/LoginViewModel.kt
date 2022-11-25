@@ -11,7 +11,7 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
     var loginText: String = ""
     var passwordText: String = ""
     fun Login(){
-        //loginUseCase.invoke()
+        loginUseCase
     }
 
 
