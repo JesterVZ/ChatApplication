@@ -11,4 +11,5 @@ data class User(
     val country: String?,
     val city: String?,
     val nickname: String?
-)
+){
+}

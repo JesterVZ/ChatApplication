@@ -16,9 +16,10 @@ class LoginUseCase @Inject constructor(
     operator fun invoke(loginData: LoginData): Flow<Resource<User>> = flow {
         try {
             emit(Resource.Loading<User>())
-            val token = repository.Login(loginData)
-            val user: User = repository.Auth(token)
-            emit(Resource.Success<User>(user))
+            //val token = repository.Login(loginData)
+            //val user: User = repository.Auth(token)
+            //emit(Resource.Success<User>(user))
+            //emit(Resource.Error<User>("An unexpected error occured!"))
         }catch(e: HttpException) {
             emit(Resource.Error<User>(e.localizedMessage ?: "An unexpected error occured!"))
         }catch(e: IOException) {

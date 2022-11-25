@@ -1,6 +1,8 @@
 package com.example.chatapplication.presentation.State
 
-data class OperationState (
+import com.example.chatapplication.data.DTO.User
+
+data class OperationState(
     val isLoading: Boolean = false,
-    val result: Object,
-    val error: String = "")
+    val result: Any? = null,
+    val error: String? = "")
