@@ -8,7 +8,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase) : ViewModel() {
-
+    var loginText: String = ""
+    var passwordText: String = ""
     fun Login(){
         //loginUseCase.invoke()
     }
