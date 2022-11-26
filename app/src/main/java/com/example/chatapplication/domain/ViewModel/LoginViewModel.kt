@@ -22,7 +22,7 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
 
     var loginText: String = ""
     var passwordText: String = ""
-    fun Login(){
+    fun login(){
         try {
             loginUseCase(LoginData(loginText, passwordText)).onEach { result ->
                 when(result){
