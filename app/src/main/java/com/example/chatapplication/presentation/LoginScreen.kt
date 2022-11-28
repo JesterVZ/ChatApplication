@@ -2,8 +2,10 @@ package com.example.chatapplication.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.OutlinedTextField
@@ -12,8 +14,10 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
@@ -52,7 +56,8 @@ fun LoginScreen(
             if(state.error != null && state.error != ""){
                 Box(modifier = Modifier
                     .background(color = RedColor)
-                    .padding(15.dp)){
+                    .padding(15.dp)
+                    .clip(shape = RoundedCornerShape(10.dp))){
                     Text(text = state.error, style = TextStyle(color = Color.White, fontSize = 16.sp))
                 }
             }
@@ -98,6 +103,8 @@ fun LoginScreen(
             }
             MainButton(text = "Login", onClick = { viewModel.loginText = loginText; viewModel.passwordText = passwordText; viewModel.login() }, modifier = Modifier.padding(vertical = 35.dp))
 
+            ClickableText(text = AnnotatedString("Forgot password?", ), onClick = {})
+            ClickableText(text = AnnotatedString("Registration"), onClick = {})
         }
         if(state.isLoading){
             CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.chatapplication.common.Resource
 import com.example.chatapplication.data.DTO.LoginData
 import com.example.chatapplication.data.DTO.User
+import com.example.chatapplication.domain.Services.UserInformationService
 import com.example.chatapplication.domain.UseCase.LoginUseCase
 import com.example.chatapplication.presentation.State.OperationState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,6 +21,9 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
     private val _state = mutableStateOf(OperationState())
     val state: State<OperationState> = _state
 
+    @Inject
+    lateinit var userInformationService: UserInformationService
+
     var loginText: String = ""
     var passwordText: String = ""
     fun login(){
@@ -28,6 +32,7 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
                 when(result){
                     is Resource.Success -> {
                         _state.value = OperationState(result = result.data)
+                        userInformationService.user = result.data
                     }
                     is Resource.Error -> {
                         _state.value = OperationState(error =  result.message ?: "An unexpected error occured")
